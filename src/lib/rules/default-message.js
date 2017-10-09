@@ -3,11 +3,14 @@ import { getProp, getPropValue, hasEveryProp, elementType } from 'jsx-ast-utils'
 const errorMessage = 'Missing defaultMessage or id attribute';
 
 const containsIdAndDefault = (node) => {
-
-    // Need to check for spread operator as props can be spread onto the element
-    // leading to an incorrect validation error.
-    const hasSpreadOperator = attributes
+    // Cannot contextualise properties inserted dynamically
+    // with spread operator, therefore we ignore these from validation;
+    const hasSpreadOperator = node.attributes
         .filter(prop => prop.type === 'JSXSpreadAttribute').length > 0;
+
+    if (hasSpreadOperator) {
+        return true;
+    }
 
     // The component is only valid if we supply defaultMessage
     //  with the ID for components requesting a translation string.
@@ -19,7 +22,7 @@ const containsIdAndDefault = (node) => {
         spreadStrict: false,
     });
 
-    return (!hasSpreadOperator && (allPropsExist && !!defaultMessageValue));
+    return (allPropsExist && !!defaultMessageValue);
 };
 
 module.exports = {
