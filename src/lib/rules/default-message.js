@@ -1,12 +1,21 @@
-import { getProp, getPropValue, elementType } from 'jsx-ast-utils';
+import { getProp, getPropValue, hasEveryProp, elementType } from 'jsx-ast-utils';
 
-const errorMessage = 'Missing defaultMessage attribute';
+const errorMessage = 'Missing defaultMessage or id attribute';
 
-const isValid = (node) => {
-    const defaultMessageAttr = getProp(node.attributes, 'defaultMessage');
-    const defaultMessageValue = getPropValue(defaultMessageAttr);
+/* the component is only valid if we supply
+ * a defaultMessage with the ID for components
+ * requesting a translation string */
+const containsIdAndDefault = (node) => {
+    const defaultMessageValue = getPropValue(
+        getProp(node.attributes, 'defaultMessage')
+    );
 
-    return defaultMessageAttr !== false && !!defaultMessageValue;
+    const allPropsExist = hasEveryProp(node.attributes, ['id', 'defaultMessage'], {
+        ignoreCase: true,
+        spreadStrict: false,
+    });
+
+    return (allPropsExist && !!defaultMessageValue);
 };
 
 module.exports = {
@@ -22,7 +31,7 @@ module.exports = {
                 return;
             }
 
-            if (!isValid(node)) {
+            if (!containsIdAndDefault(node)) {
                 context.report({
                     node,
                     message: errorMessage,
