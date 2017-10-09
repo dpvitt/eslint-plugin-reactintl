@@ -1,0 +1,38 @@
+{
+  "name": "eslint-plugin-reactintl",
+  "version": "0.0.1",
+  "description": "Linting for react-intl components",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Dan Pavitt",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && babel src/lib --out-dir lib --ignore 'utils,**/*.spec.js,node_modules' ",
+    "test": "jest"
+  },
+  "dependencies": {
+    "jsx-ast-utils": "~2.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "~6.26.0",
+    "babel-preset-es2015": "~6.24.1",
+    "eslint": "~4.8.0",
+    "jest": "~21.2.1",
+    "object.assign": "~4.0.4"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "peerDependencies": {
+    "eslint": "^3 || ^4"
+  },
+  "license": "MIT",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
