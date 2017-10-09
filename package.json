@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-reactintl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Linting for react-intl components",
   "keywords": [
     "eslint",
@@ -11,7 +11,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -rf lib && babel src/lib --out-dir lib --ignore 'utils,**/*.spec.js,node_modules' ",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run test && npm run build"
   },
   "dependencies": {
     "jsx-ast-utils": "~2.0.1"
