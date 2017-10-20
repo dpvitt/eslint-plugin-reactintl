@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-reactintl",
-  "version": "0.0.8",
+  "version": "0.1.2",
   "description": "Linting for react-intl components",
   "keywords": [
     "eslint",

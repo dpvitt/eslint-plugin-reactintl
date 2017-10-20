@@ -1,4 +1,5 @@
-import defaultMessage from './rules/default-message';
+import defaultMessage from './rules/default-message/default-message';
+import containsHardcodedCopy from './rules/contains-hardcoded-copy/contains-hardcoded-copy';
 
 /**
  * @fileoverview Ensures react-intl components have a defaultMessage supplied
@@ -8,6 +9,7 @@ import defaultMessage from './rules/default-message';
 module.exports = {
     rules: {
         'default-message': defaultMessage,
+        'contains-hardcoded-copy': containsHardcodedCopy,
     },
     configs: {
         recommended: {
@@ -17,7 +19,8 @@ module.exports = {
                 },
             },
             rules: {
-                'default-message': 'error',
+                'default-message': 'warning',
+                'contains-hardcoded-copy': 'off',
             },
         },
         strict: {
@@ -27,7 +30,8 @@ module.exports = {
                 },
             },
             rules: {
-                'default-message': 'error',
+                'default-message': 'warning',
+                'contains-hardcoded-copy': 'off',
             },
         },
     },

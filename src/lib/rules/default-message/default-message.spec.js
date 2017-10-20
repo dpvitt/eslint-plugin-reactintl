@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint';
 import assign from 'object.assign';
 import rule from './default-message';
-import parseJSX from '../utils/parseJSX';
+import parseJSX from '../../utils/parseJSX';
 
 const ruleTester = new RuleTester();
 

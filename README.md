@@ -21,7 +21,11 @@ module.exports = {
 - `default-message`
     - ensures a component has defaultMessage and id supplied, unless the properties are added in a spread operator
     - define other components you want to apply the same linting on in the component property of the rule options (`[ "AnotherComponentToLint" ]`)
-    - [documentation](https://github.com/dpvitt/eslint-plugin-reactintl/blob/master/src/lib/rules/default-message.md)
+    - [documentation](https://github.com/dpvitt/eslint-plugin-reactintl/blob/master/src/lib/rules/default-message/default-message.md)
+- `contains-hardcoded-copy`
+    - ensures all nodes do not contain hardcoded copy / string literals.
+    - not recommended to turn this all the time as it's very intensive, but it will save time in retrospectively adding FormattedMessage components to wrap around strings
+    - [documentation](https://github.com/dpvitt/eslint-plugin-reactintl/blob/master/src/lib/rules/contains-hardcoded-copy/contains-hardcoded-copy.md)
 
 ## Development
 
