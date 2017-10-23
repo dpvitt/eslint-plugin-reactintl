@@ -20,8 +20,9 @@ function isLiteral (child) {
 // After removing all whitespace check if there's any
 // part of the literal left to evaluate
 function literalLength (child) {
-    const childValue = child.value && child.value.replace(/[ \t\r\n]+/g, '');
-    return Boolean(childValue.length);
+    const childValue = child && child.value && child.value.replace
+        && child.value.replace(/[ \t\r\n]+/g, '').length;
+    return Boolean(childValue);
 }
 
 module.exports = {
